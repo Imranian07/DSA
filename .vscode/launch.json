@@ -8,8 +8,13 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
+<<<<<<< HEAD
       "cwd": "c:/Users/AKHALAK ANSARI/Music/c dsa",
       "program": "c:/Users/AKHALAK ANSARI/Music/c dsa/build/Debug/outDebug",
+=======
+      "cwd": "c:/Users/AKHALAK ANSARI/Music/c dsa/dsapra3",
+      "program": "c:/Users/AKHALAK ANSARI/Music/c dsa/dsapra3/build/Debug/outDebug",
+>>>>>>> d80306012cbf881ced2986565abe7987aadcbf2f
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

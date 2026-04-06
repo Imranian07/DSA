@@ -1,0 +1,100 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Node structure
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+// Function to create new node
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Insert at particular position
+struct Node* insertAtPosition(struct Node* head, int data, int pos) {
+    struct Node* newNode = createNode(data);
+
+    if (pos == 1) {
+        newNode->next = head;
+        return newNode;
+    }
+
+    struct Node* temp = head;
+    int i = 1;
+
+    while (i < pos - 1 && temp != NULL) {
+        temp = temp->next;
+        i++;
+    }
+
+    if (temp == NULL) {
+        printf("Position out of range\n");
+        return head;
+    }
+
+    newNode->next = temp->next;
+    temp->next = newNode;
+
+    return head;
+}
+
+// Insert after key value
+struct Node* insertAfterKey(struct Node* head, int key, int data) {
+    struct Node* temp = head;
+
+    while (temp != NULL && temp->data != key) {
+        temp = temp->next;
+    }
+
+    if (temp == NULL) {
+        printf("Key not found\n");
+        return head;
+    }
+
+    struct Node* newNode = createNode(data);
+    newNode->next = temp->next;
+    temp->next = newNode;
+
+    return head;
+}
+
+// Display linked list
+void display(struct Node* head) {
+    struct Node* temp = head;
+
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+// Main function
+int main() {
+    struct Node* head = NULL;
+
+    // Initial nodes
+    head = createNode(10);
+    head->next = createNode(20);
+    head->next->next = createNode(30);
+
+    printf("Original List:\n");
+    display(head);
+
+    // Insert at position
+    head = insertAtPosition(head, 15, 2);
+    printf("After inserting 15 at position 2:\n");
+    display(head);
+
+    // Insert after key
+    head = insertAfterKey(head, 20, 25);
+    printf("After inserting 25 after key 20:\n");
+    display(head);
+
+    return 0;
+}
